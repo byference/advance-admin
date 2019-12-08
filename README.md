@@ -1,19 +1,16 @@
-# advance-admin
+# Advance Admin Project
 
 
-Advance Admin Project
-
-
-
+前端工程 [advance-web](https://github.com/byference/advance-web)
 
 
 
 
 ## Road Map
-- [ ] 个人中心
-- [ ] 账户设置
-- [ ] 账户活动分析
-- [ ] Oauth2 Clients Setting
+- [ ] 用户管理
+- [ ] 角色管理
+- [ ] 权限管理
+- [ ] OAuth2 clients 管理
 - [ ] 。。。
 
 
