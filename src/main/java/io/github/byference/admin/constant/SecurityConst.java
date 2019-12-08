@@ -9,19 +9,14 @@ package io.github.byference.admin.constant;
 public interface SecurityConst {
 
     /**
-     * default resource id
+     * public client id
      */
-    String ADMIN_RESOURCE_ID = "ADMIN_RESOURCE_ID";
+    String PUBLIC_CLIENT_ID = "PUBLIC_CLIENT_ID";
 
     /**
-     * default client id
+     * public secret
      */
-    String ADMIN_CLIENT_ID = "ADMIN_CLIENT_ID";
-
-    /**
-     * default secret
-     */
-    String ADMIN_SECRET = "ADMIN_SECRET";
+    String PUBLIC_SECRET = "PUBLIC_SECRET";
 
     /**
      * default access token validity seconds

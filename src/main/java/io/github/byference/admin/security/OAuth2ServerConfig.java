@@ -1,12 +1,13 @@
 package io.github.byference.admin.security;
 
 import io.github.byference.admin.constant.SecurityConst;
+import io.github.byference.admin.security.handler.DefaultAccessDeniedHandler;
 import io.github.byference.admin.security.handler.DefaultAuthenticationEntryPoint;
 import io.github.byference.admin.security.handler.DefaultLogoutSuccessHandler;
-import io.github.byference.admin.security.handler.DefaultAccessDeniedHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -30,7 +31,6 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 @Configuration
 public class OAuth2ServerConfig {
 
-
     /**
      * ResourceServer
      */
@@ -40,22 +40,17 @@ public class OAuth2ServerConfig {
 
         @Override
         public void configure(ResourceServerSecurityConfigurer resources) {
-            resources.resourceId(SecurityConst.ADMIN_RESOURCE_ID)
-                    .stateless(true)
-                    .authenticationEntryPoint(new DefaultAuthenticationEntryPoint())
+            resources.authenticationEntryPoint(new DefaultAuthenticationEntryPoint())
                     .accessDeniedHandler(new DefaultAccessDeniedHandler());
         }
 
         @Override
         public void configure(HttpSecurity http) throws Exception {
-            http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-                    .and()
-                    .requestMatchers().anyRequest()
-                    .and()
-                    .anonymous()
+            http.csrf().disable()
+                    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                     .and()
                     .authorizeRequests()
-                    //.antMatchers("/anonymous/**").permitAll()
+                    .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                     .anyRequest().authenticated()
                     .and().logout().logoutSuccessHandler(new DefaultLogoutSuccessHandler());
         }
@@ -78,12 +73,10 @@ public class OAuth2ServerConfig {
         @Override
         public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
             clients.inMemory()
-                    .withClient(SecurityConst.ADMIN_CLIENT_ID)
-                    .resourceIds(SecurityConst.ADMIN_RESOURCE_ID)
-                    .secret(passwordEncoder.encode(SecurityConst.ADMIN_SECRET))
+                    .withClient(SecurityConst.PUBLIC_CLIENT_ID)
+                    .secret(passwordEncoder.encode(SecurityConst.PUBLIC_SECRET))
                     .authorizedGrantTypes("password", "refresh_token")
-                    .scopes("select")
-                    .authorities("client")
+                    .scopes("all")
                     .accessTokenValiditySeconds(SecurityConst.ACCESS_TOKEN_VALIDITY_SECONDS)
                     .refreshTokenValiditySeconds(SecurityConst.REFRESH_TOKEN_VALIDITY_SECONDS);
         }
