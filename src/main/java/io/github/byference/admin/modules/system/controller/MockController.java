@@ -17,34 +17,47 @@ import org.springframework.web.bind.annotation.RestController;
 public class MockController {
 
 
+    @GetMapping("/sysUser/info")
+    public Result<JSONObject> info() {
+
+        // UserInfo.json
+        String roleStr = getInfoStr();
+        final JSONObject userInfo = JSON.parseObject(roleStr);
+        return Result.ok(userInfo);
+    }
+
+
     @GetMapping("/role")
     public Result<JSONObject> role() {
 
+        // role.json
         String roleStr = getRoleStr();
         final JSONObject userInfo = JSON.parseObject(roleStr);
-        return Result.ok(userInfo);
+        return Result.ok(new JSONObject());
     }
 
-    @GetMapping("/service")
-    public Result<JSONObject> service() {
 
-        String roleStr = getServiceStr();
-        final JSONObject userInfo = JSON.parseObject(roleStr);
-        return Result.ok(userInfo);
-    }
 
-    @GetMapping("/list/search/projects")
-    public Result<JSONObject> projects() {
 
-        String roleStr = getProjectsStr();
-        final JSONObject userInfo = JSON.parseObject(roleStr);
-        return Result.ok(userInfo);
-    }
 
-    @GetMapping("/workplace/activity")
-    public Result<JSONArray> activity() {
 
-        String roleStr = getActivityStr();
+
+
+
+
+
+    // **********************   待修改   **********************
+
+
+
+
+
+
+
+    @GetMapping("/workplace/radar")
+    public Result<JSONArray> radar() {
+
+        String roleStr = getRadarStr();
         final JSONArray userInfo = JSON.parseArray(roleStr);
         return Result.ok(userInfo);
     }
@@ -57,18 +70,26 @@ public class MockController {
         return Result.ok(userInfo);
     }
 
-    @GetMapping("/workplace/radar")
-    public Result<JSONArray> radar() {
+    @GetMapping("/workplace/activity")
+    public Result<JSONArray> activity() {
 
-        String roleStr = getRadarStr();
+        String roleStr = getActivityStr();
         final JSONArray userInfo = JSON.parseArray(roleStr);
         return Result.ok(userInfo);
     }
 
-    @GetMapping("/sysUser/info")
-    public Result<JSONObject> info() {
+    @GetMapping("/list/search/projects")
+    public Result<JSONObject> projects() {
 
-        String roleStr = getInfoStr();
+        String roleStr = getProjectsStr();
+        final JSONObject userInfo = JSON.parseObject(roleStr);
+        return Result.ok(userInfo);
+    }
+
+    @GetMapping("/service")
+    public Result<JSONObject> service() {
+
+        String roleStr = getServiceStr();
         final JSONObject userInfo = JSON.parseObject(roleStr);
         return Result.ok(userInfo);
     }
@@ -1326,753 +1347,40 @@ public class MockController {
 
     private String getInfoStr() {
         return "{\n" +
-                "    \"id\": \"4291d7da9005377ec9aec4a71ea837f\",\n" +
-                "    \"name\": \"byference\",\n" +
-                "    \"username\": \"admin\",\n" +
-                "    \"password\": \"\",\n" +
-                "    \"avatar\": \"/avatar2.jpg\",\n" +
+                "  \"id\": \"4291d7da9005377ec9aec4a71ea837f\",\n" +
+                "  \"name\": \"天野远子\",\n" +
+                "  \"username\": \"admin\",\n" +
+                "  \"password\": \"\",\n" +
+                "  \"avatar\": \"/avatar2.jpg\",\n" +
+                "  \"status\": 1,\n" +
+                "  \"telephone\": \"\",\n" +
+                "  \"lastLoginIp\": \"27.154.74.117\",\n" +
+                "  \"lastLoginTime\": 1534837621348,\n" +
+                "  \"creatorId\": \"admin\",\n" +
+                "  \"createTime\": 1497160610259,\n" +
+                "  \"merchantCode\": \"TLif2btpzg079h15bk\",\n" +
+                "  \"deleted\": 0,\n" +
+                "  \"roleId\": \"admin\",\n" +
+                "  \"role\": {\n" +
+                "    \"id\": \"admin\",\n" +
+                "    \"name\": \"管理员\",\n" +
+                "    \"describe\": \"拥有所有权限\",\n" +
                 "    \"status\": 1,\n" +
-                "    \"telephone\": \"\",\n" +
-                "    \"lastLoginIp\": \"27.154.74.117\",\n" +
-                "    \"lastLoginTime\": 1534837621348,\n" +
-                "    \"creatorId\": \"admin\",\n" +
+                "    \"creatorId\": \"system\",\n" +
                 "    \"createTime\": 1497160610259,\n" +
-                "    \"merchantCode\": \"TLif2btpzg079h15bk\",\n" +
                 "    \"deleted\": 0,\n" +
-                "    \"roleId\": \"admin\",\n" +
-                "    \"role\": {\n" +
-                "        \"id\": \"admin\",\n" +
-                "        \"name\": \"管理员\",\n" +
-                "        \"describe\": \"拥有所有权限\",\n" +
-                "        \"status\": 1,\n" +
-                "        \"creatorId\": \"system\",\n" +
-                "        \"createTime\": 1497160610259,\n" +
-                "        \"deleted\": 0,\n" +
-                "        \"permissions\": {\n" +
-                "            \"roleId\": \"admin\",\n" +
-                "            \"permissionId\": \"support\",\n" +
-                "            \"permissionName\": \"超级模块\",\n" +
-                "            \"actions\": [\n" +
-                "                {\n" +
-                "                    \"action\": \"add\",\n" +
-                "                    \"defaultCheck\": false,\n" +
-                "                    \"describe\": \"新增\"\n" +
-                "                },\n" +
-                "                {\n" +
-                "                    \"action\": \"import\",\n" +
-                "                    \"defaultCheck\": false,\n" +
-                "                    \"describe\": \"导入\"\n" +
-                "                },\n" +
-                "                {\n" +
-                "                    \"action\": \"get\",\n" +
-                "                    \"defaultCheck\": false,\n" +
-                "                    \"describe\": \"详情\"\n" +
-                "                },\n" +
-                "                {\n" +
-                "                    \"action\": \"update\",\n" +
-                "                    \"defaultCheck\": false,\n" +
-                "                    \"describe\": \"修改\"\n" +
-                "                },\n" +
-                "                {\n" +
-                "                    \"action\": \"delete\",\n" +
-                "                    \"defaultCheck\": false,\n" +
-                "                    \"describe\": \"删除\"\n" +
-                "                },\n" +
-                "                {\n" +
-                "                    \"action\": \"export\",\n" +
-                "                    \"defaultCheck\": false,\n" +
-                "                    \"describe\": \"导出\"\n" +
-                "                }\n" +
-                "            ],\n" +
-                "            \"actionEntitySet\": [\n" +
-                "                {\n" +
-                "                    \"action\": \"add\",\n" +
-                "                    \"describe\": \"新增\",\n" +
-                "                    \"defaultCheck\": false\n" +
-                "                },\n" +
-                "                {\n" +
-                "                    \"action\": \"import\",\n" +
-                "                    \"describe\": \"导入\",\n" +
-                "                    \"defaultCheck\": false\n" +
-                "                },\n" +
-                "                {\n" +
-                "                    \"action\": \"get\",\n" +
-                "                    \"describe\": \"详情\",\n" +
-                "                    \"defaultCheck\": false\n" +
-                "                },\n" +
-                "                {\n" +
-                "                    \"action\": \"update\",\n" +
-                "                    \"describe\": \"修改\",\n" +
-                "                    \"defaultCheck\": false\n" +
-                "                },\n" +
-                "                {\n" +
-                "                    \"action\": \"delete\",\n" +
-                "                    \"describe\": \"删除\",\n" +
-                "                    \"defaultCheck\": false\n" +
-                "                },\n" +
-                "                {\n" +
-                "                    \"action\": \"export\",\n" +
-                "                    \"describe\": \"导出\",\n" +
-                "                    \"defaultCheck\": false\n" +
-                "                }\n" +
-                "            ],\n" +
-                "            \"actionList\": null,\n" +
-                "            \"dataAccess\": null\n" +
-                "        },\n" +
-                "        \"permissions\": [\n" +
-                "            {\n" +
-                "                \"roleId\": \"admin\",\n" +
-                "                \"permissionId\": \"dashboard\",\n" +
-                "                \"permissionName\": \"仪表盘\",\n" +
-                "                \"actions\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"新增\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"query\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"查询\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"详情\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"修改\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"删除\"\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionEntitySet\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"describe\": \"新增\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"query\",\n" +
-                "                        \"describe\": \"查询\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"describe\": \"详情\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"describe\": \"修改\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"describe\": \"删除\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionList\": null,\n" +
-                "                \"dataAccess\": null\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"roleId\": \"admin\",\n" +
-                "                \"permissionId\": \"exception\",\n" +
-                "                \"permissionName\": \"异常页面权限\",\n" +
-                "                \"actions\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"新增\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"query\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"查询\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"详情\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"修改\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"删除\"\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionEntitySet\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"describe\": \"新增\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"query\",\n" +
-                "                        \"describe\": \"查询\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"describe\": \"详情\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"describe\": \"修改\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"describe\": \"删除\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionList\": null,\n" +
-                "                \"dataAccess\": null\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"roleId\": \"admin\",\n" +
-                "                \"permissionId\": \"result\",\n" +
-                "                \"permissionName\": \"结果权限\",\n" +
-                "                \"actions\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"新增\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"query\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"查询\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"详情\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"修改\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"删除\"\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionEntitySet\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"describe\": \"新增\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"query\",\n" +
-                "                        \"describe\": \"查询\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"describe\": \"详情\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"describe\": \"修改\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"describe\": \"删除\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionList\": null,\n" +
-                "                \"dataAccess\": null\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"roleId\": \"admin\",\n" +
-                "                \"permissionId\": \"profile\",\n" +
-                "                \"permissionName\": \"详细页权限\",\n" +
-                "                \"actions\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"新增\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"query\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"查询\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"详情\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"修改\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"删除\"\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionEntitySet\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"describe\": \"新增\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"query\",\n" +
-                "                        \"describe\": \"查询\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"describe\": \"详情\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"describe\": \"修改\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"describe\": \"删除\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionList\": null,\n" +
-                "                \"dataAccess\": null\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"roleId\": \"admin\",\n" +
-                "                \"permissionId\": \"table\",\n" +
-                "                \"permissionName\": \"表格权限\",\n" +
-                "                \"actions\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"新增\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"import\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"导入\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"详情\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"修改\"\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionEntitySet\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"describe\": \"新增\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"import\",\n" +
-                "                        \"describe\": \"导入\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"describe\": \"详情\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"describe\": \"修改\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionList\": null,\n" +
-                "                \"dataAccess\": null\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"roleId\": \"admin\",\n" +
-                "                \"permissionId\": \"form\",\n" +
-                "                \"permissionName\": \"表单权限\",\n" +
-                "                \"actions\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"新增\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"详情\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"query\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"查询\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"修改\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"删除\"\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionEntitySet\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"describe\": \"新增\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"describe\": \"详情\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"query\",\n" +
-                "                        \"describe\": \"查询\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"describe\": \"修改\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"describe\": \"删除\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionList\": null,\n" +
-                "                \"dataAccess\": null\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"roleId\": \"admin\",\n" +
-                "                \"permissionId\": \"order\",\n" +
-                "                \"permissionName\": \"订单管理\",\n" +
-                "                \"actions\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"新增\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"query\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"查询\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"详情\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"修改\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"删除\"\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionEntitySet\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"describe\": \"新增\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"query\",\n" +
-                "                        \"describe\": \"查询\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"describe\": \"详情\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"describe\": \"修改\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"describe\": \"删除\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionList\": null,\n" +
-                "                \"dataAccess\": null\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"roleId\": \"admin\",\n" +
-                "                \"permissionId\": \"permission\",\n" +
-                "                \"permissionName\": \"权限管理\",\n" +
-                "                \"actions\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"新增\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"详情\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"修改\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"删除\"\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionEntitySet\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"describe\": \"新增\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"describe\": \"详情\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"describe\": \"修改\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"describe\": \"删除\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionList\": null,\n" +
-                "                \"dataAccess\": null\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"roleId\": \"admin\",\n" +
-                "                \"permissionId\": \"role\",\n" +
-                "                \"permissionName\": \"角色管理\",\n" +
-                "                \"actions\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"新增\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"详情\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"修改\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"删除\"\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionEntitySet\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"describe\": \"新增\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"describe\": \"详情\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"describe\": \"修改\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"describe\": \"删除\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionList\": null,\n" +
-                "                \"dataAccess\": null\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"roleId\": \"admin\",\n" +
-                "                \"permissionId\": \"table\",\n" +
-                "                \"permissionName\": \"桌子管理\",\n" +
-                "                \"actions\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"新增\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"详情\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"query\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"查询\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"修改\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"删除\"\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionEntitySet\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"describe\": \"新增\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"describe\": \"详情\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"query\",\n" +
-                "                        \"describe\": \"查询\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"describe\": \"修改\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"describe\": \"删除\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionList\": null,\n" +
-                "                \"dataAccess\": null\n" +
-                "            },\n" +
-                "            {\n" +
-                "                \"roleId\": \"admin\",\n" +
-                "                \"permissionId\": \"user\",\n" +
-                "                \"permissionName\": \"用户管理\",\n" +
-                "                \"actions\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"新增\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"import\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"导入\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"详情\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"修改\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"删除\"\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"export\",\n" +
-                "                        \"defaultCheck\": false,\n" +
-                "                        \"describe\": \"导出\"\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionEntitySet\": [\n" +
-                "                    {\n" +
-                "                        \"action\": \"add\",\n" +
-                "                        \"describe\": \"新增\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"import\",\n" +
-                "                        \"describe\": \"导入\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"get\",\n" +
-                "                        \"describe\": \"详情\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"update\",\n" +
-                "                        \"describe\": \"修改\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"delete\",\n" +
-                "                        \"describe\": \"删除\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    },\n" +
-                "                    {\n" +
-                "                        \"action\": \"export\",\n" +
-                "                        \"describe\": \"导出\",\n" +
-                "                        \"defaultCheck\": false\n" +
-                "                    }\n" +
-                "                ],\n" +
-                "                \"actionList\": null,\n" +
-                "                \"dataAccess\": null\n" +
-                "            }\n" +
-                "        ]\n" +
-                "    }\n" +
+                "    \"permissions\": [\n" +
+                "      {\n" +
+                "        \"roleId\": \"admin\",\n" +
+                "        \"permissionId\": \"dashboard\",\n" +
+                "        \"permissionName\": \"仪表盘\",\n" +
+                "        \"actions\": [],\n" +
+                "        \"actionEntitySet\": [],\n" +
+                "        \"actionList\": null,\n" +
+                "        \"dataAccess\": null\n" +
+                "      }\n" +
+                "    ]\n" +
+                "  }\n" +
                 "}";
     }
 
