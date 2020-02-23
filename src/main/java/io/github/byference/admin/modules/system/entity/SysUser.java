@@ -54,28 +54,33 @@ public class SysUser implements Serializable {
     private String userProfile;
 
     /**
-     * 用户状态：0禁用，1启用，2锁定
+     * 手机号
+     */
+    private String telephone;
+
+    /**
+     * 用户状态：-1删除，0禁用，1启用，2锁定
      */
     private Integer userState;
 
     /**
      * 创建人
      */
-    private Integer createUser;
+    private Integer creator;
 
     /**
      * 创建时间
      */
-    private Date createDate;
+    private Date creationTime;
 
     /**
      * 修改人
      */
-    private Integer modifyUser;
+    private Integer modifier;
 
     /**
      * 修改时间
      */
-    private Date modifyDate;
+    private Date modificationTime;
 
 }

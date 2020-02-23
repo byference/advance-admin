@@ -4,7 +4,6 @@ import io.github.byference.admin.modules.system.entity.SysUser;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * SysUserVO
@@ -29,11 +28,6 @@ public class SysUserVO implements Serializable {
     private String userName;
 
     /**
-     * 密码
-     */
-    private String password;
-
-    /**
      * 昵称
      */
     private String nickName;
@@ -54,29 +48,8 @@ public class SysUserVO implements Serializable {
     private String userProfile;
 
     /**
-     * 用户状态：0禁用，1启用，2锁定
+     * 手机号
      */
-    private Integer userState;
-
-    /**
-     * 创建人
-     */
-    private Integer createUser;
-
-    /**
-     * 创建时间
-     */
-    private Date createDate;
-
-    /**
-     * 修改人
-     */
-    private Integer modifyUser;
-
-    /**
-     * 修改时间
-     */
-    private Date modifyDate;
-
+    private String telephone;
 
 }

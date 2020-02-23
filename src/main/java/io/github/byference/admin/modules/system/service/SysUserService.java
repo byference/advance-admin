@@ -3,6 +3,7 @@ package io.github.byference.admin.modules.system.service;
 import io.github.byference.admin.modules.system.entity.SysUser;
 import io.github.byference.admin.modules.system.mapper.SysUserMapper;
 import io.github.byference.admin.modules.system.vo.ModifySysUserVO;
+import io.github.byference.admin.modules.system.vo.SysUserVO;
 import io.github.byference.admin.util.PrincipalUtil;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
@@ -26,6 +27,21 @@ public class SysUserService {
 
     private final SysUserMapper sysUserMapper;
 
+
+    /**
+     * get userInfo by userId
+     * @param userId 用户ID
+     * @return {@link SysUser}
+     */
+    public SysUserVO getByUserId(Integer userId) {
+        Assert.notNull(userId, "用户ID不能为空");
+        SysUser sysUser = sysUserMapper.selectByPrimaryKey(userId);
+        // 脱敏
+        SysUserVO sysUserVO = new SysUserVO();
+        BeanUtils.copyProperties(sysUser, sysUserVO);
+        return sysUserVO;
+    }
+
     /**
      * modify SysUser information
      *
@@ -36,8 +52,8 @@ public class SysUserService {
 
         SysUser sysUser = new SysUser();
         BeanUtils.copyProperties(modifySysUserVO, sysUser);
-        sysUser.setModifyDate(new Date());
-        sysUser.setModifyUser(PrincipalUtil.getCurrentUserId());
+        sysUser.setModificationTime(new Date());
+        sysUser.setModifier(PrincipalUtil.getCurrentUserId());
         return sysUserMapper.updateByPrimaryKeySelective(sysUser) > 0;
     }
 
