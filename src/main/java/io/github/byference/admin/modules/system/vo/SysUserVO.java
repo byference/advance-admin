@@ -18,11 +18,6 @@ public class SysUserVO implements Serializable {
     private static final long serialVersionUID = -7888983370662950830L;
 
     /**
-     * 主键ID
-     */
-    private Integer id;
-
-    /**
      * 用户名
      */
     private String userName;
@@ -51,5 +46,15 @@ public class SysUserVO implements Serializable {
      * 手机号
      */
     private String telephone;
+
+    /**
+     * 角色ID
+     */
+    private Integer roleId;
+
+    /**
+     * 角色
+     */
+    private SysRoleVO role;
 
 }
