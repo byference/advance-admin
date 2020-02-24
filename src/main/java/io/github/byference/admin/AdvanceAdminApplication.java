@@ -10,10 +10,10 @@ import tk.mybatis.spring.annotation.MapperScan;
  */
 @MapperScan("io.github.byference.admin.modules.*.mapper")
 @SpringBootApplication
-public class AdvanceAdminProjectApplication {
+public class AdvanceAdminApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AdvanceAdminProjectApplication.class, args);
+        SpringApplication.run(AdvanceAdminApplication.class, args);
     }
 
 }

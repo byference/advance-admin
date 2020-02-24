@@ -23,7 +23,7 @@ public class DefaultWebSecurityConfiguration extends WebSecurityConfigurerAdapte
     }
 
     @Bean
-    public PasswordEncoder defaultPasswordEncoder(){
+    public PasswordEncoder defaultPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
