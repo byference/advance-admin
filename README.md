@@ -5,13 +5,39 @@
 
 
 
-
 ## Road Map
 - [ ] 用户管理
 - [ ] 角色管理
 - [ ] 权限管理
 - [ ] OAuth2 clients 管理
 - [ ] 。。。
+
+
+
+
+## Git commit 规范 (待定)
+~~~
+# 主要type
+feat: 增加新功能
+fix: 修复bug
+
+# 特殊type
+docs: 只改动了文档相关的内容
+style: 不影响代码含义的改动，例如去掉空格、改变缩进、增删分号
+build: 构造工具或者外部依赖的改动，例如pom.xml
+refactor: 代码重构时使用
+revert: 执行git revert打印的message
+~~~
+
+eg:
+~~~
+# 增加新功能
+feat: add xxx
+
+# 修复bug
+fix: xxx resolved #issues
+~~~
+
 
 
 
@@ -23,22 +49,5 @@
 
 
 
-**Oauth2 Clients SQL**
-~~~sql
-DROP TABLE IF EXISTS `oauth_client_details`;
-CREATE TABLE `oauth_client_details` (
-  `client_id` varchar(48) NOT NULL,
-  `resource_ids` varchar(256) DEFAULT NULL,
-  `client_secret` varchar(256) DEFAULT NULL,
-  `scope` varchar(256) DEFAULT NULL,
-  `authorized_grant_types` varchar(256) DEFAULT NULL,
-  `web_server_redirect_uri` varchar(256) DEFAULT NULL,
-  `authorities` varchar(256) DEFAULT NULL,
-  `access_token_validity` int(11) DEFAULT NULL,
-  `refresh_token_validity` int(11) DEFAULT NULL,
-  `additional_information` varchar(4096) DEFAULT NULL,
-  `autoapprove` varchar(256) DEFAULT NULL,
-  PRIMARY KEY (`client_id`)
-);
-~~~
+
 
