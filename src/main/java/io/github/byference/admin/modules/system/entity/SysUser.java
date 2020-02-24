@@ -59,6 +59,11 @@ public class SysUser implements Serializable {
     private String telephone;
 
     /**
+     * 角色ID
+     */
+    private Integer roleId;
+
+    /**
      * 用户状态：-1删除，0禁用，1启用，2锁定
      */
     private Integer userState;
@@ -66,21 +71,21 @@ public class SysUser implements Serializable {
     /**
      * 创建人
      */
-    private Integer creator;
+    private Integer creatorId;
 
     /**
      * 创建时间
      */
-    private Date creationTime;
+    private Date createTime;
 
     /**
      * 修改人
      */
-    private Integer modifier;
+    private Integer modifierId;
 
     /**
      * 修改时间
      */
-    private Date modificationTime;
+    private Date modifyTime;
 
 }

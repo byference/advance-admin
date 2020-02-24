@@ -52,8 +52,8 @@ public class SysUserService {
 
         SysUser sysUser = new SysUser();
         BeanUtils.copyProperties(modifySysUserVO, sysUser);
-        sysUser.setModificationTime(new Date());
-        sysUser.setModifier(PrincipalUtil.getCurrentUserId());
+        sysUser.setModifyTime(new Date());
+        sysUser.setModifierId(PrincipalUtil.getCurrentUserId());
         return sysUserMapper.updateByPrimaryKeySelective(sysUser) > 0;
     }
 
