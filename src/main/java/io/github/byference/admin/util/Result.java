@@ -1,6 +1,7 @@
 package io.github.byference.admin.util;
 
-import io.github.byference.admin.constant.ResponseCodeConst;
+import io.github.byference.admin.constant.EnumVisitor;
+import io.github.byference.admin.constant.SystemCommonEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Result<T> {
+public final class Result<T> {
 
     /**
      * response code
@@ -31,21 +32,24 @@ public class Result<T> {
      */
     private T data;
 
-
     public static <T> Result<T> ok() {
         return ok(null);
     }
 
     public static <T> Result<T> ok(T data) {
-        return new Result<>(ResponseCodeConst.SUCCESS, "", data);
+        return new Result<>(SystemCommonEnum.SUCCESS.getCode(), SystemCommonEnum.SUCCESS.getDescription(), data);
     }
 
     public static <T> Result<T> fail() {
-        return fail(null);
+        return fail(SystemCommonEnum.FAIL);
     }
 
     public static <T> Result<T> fail(String message) {
-        return new Result<>(ResponseCodeConst.FAIL, message, null);
+        return new Result<>(SystemCommonEnum.FAIL.getCode(), message, null);
+    }
+
+    public static <T> Result<T> fail(EnumVisitor<Integer> enumVisitor) {
+        return new Result<>(enumVisitor.getCode(), enumVisitor.getDescription(), null);
     }
 
 }
