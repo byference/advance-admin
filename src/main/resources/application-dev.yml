@@ -35,3 +35,9 @@ mapper:
   checkExampleEntityClass: true
   safe-delete: true
   safe-update: true
+advance:
+  minio:
+    enable: true
+    url: http://byference.com:9000
+    access-key: username
+    secret-key: password
