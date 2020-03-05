@@ -1,6 +1,6 @@
 package io.github.byference.admin.util;
 
-import io.github.byference.admin.security.AvanceeUserDetails;
+import io.github.byference.admin.security.AdvanceUserDetails;
 import io.github.byference.admin.constant.SecurityConst;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,7 +22,7 @@ public class PrincipalUtil {
      * get login user ID
      */
     public static String getCurrentUserName() {
-        return isLogin() ? ((AvanceeUserDetails) getPrincipal()).getUsername() : null;
+        return isLogin() ? ((AdvanceUserDetails) getPrincipal()).getUsername() : null;
     }
 
     /**
@@ -30,7 +30,7 @@ public class PrincipalUtil {
      */
     public static Integer getCurrentUserId() {
 
-        return isLogin() ? ((AvanceeUserDetails) getPrincipal()).getId() : null;
+        return isLogin() ? ((AdvanceUserDetails) getPrincipal()).getId() : null;
     }
 
     /**

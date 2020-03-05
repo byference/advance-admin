@@ -30,7 +30,7 @@ public class DefaultUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("账号不存在");
         }
         // 授权 GrantedAuthority
-        return new AvanceeUserDetails(sysUser, AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER"));
+        return new AdvanceUserDetails(sysUser, AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER"));
     }
 
 }

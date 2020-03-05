@@ -10,7 +10,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.github.avancee</groupId>
+    <groupId>io.github.byference</groupId>
     <artifactId>advance-admin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>advance-admin</name>
