@@ -1,4 +1,4 @@
-package io.github.byference.admin.core;
+package io.github.byference.admin.core.oss;
 
 import io.github.byference.admin.constant.AdvanceAdminConst;
 import io.github.byference.admin.constant.SystemCommonEnum;

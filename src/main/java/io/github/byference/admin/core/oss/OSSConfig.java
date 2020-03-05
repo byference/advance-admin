@@ -1,7 +1,6 @@
-package io.github.byference.admin.core;
+package io.github.byference.admin.core.oss;
 
 import io.github.byference.admin.constant.SystemCommonEnum;
-import io.github.byference.admin.core.properties.OSSProperties;
 import io.github.byference.admin.exception.AdvanceAdminException;
 import io.minio.MinioClient;
 import lombok.extern.slf4j.Slf4j;

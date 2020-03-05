@@ -1,4 +1,4 @@
-package io.github.byference.admin.core.properties;
+package io.github.byference.admin.core.oss;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
