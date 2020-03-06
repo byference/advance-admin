@@ -26,6 +26,7 @@
         <mapper.version>2.1.5</mapper.version>
         <pagehelper.version>1.2.12</pagehelper.version>
         <minio.version>6.0.13</minio.version>
+        <knife4j.version>2.0.1</knife4j.version>
     </properties>
 
     <dependencies>
@@ -128,6 +129,12 @@
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
             <version>${minio.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>${knife4j.version}</version>
         </dependency>
     </dependencies>
 
