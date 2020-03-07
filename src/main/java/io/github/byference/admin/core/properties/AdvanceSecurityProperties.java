@@ -1,7 +1,6 @@
-package io.github.byference.admin.security.properties;
+package io.github.byference.admin.core.properties;
 
 import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
  * AdvanceSecurityProperties
@@ -10,7 +9,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @since 2020-03-05
  */
 @Data
-@ConfigurationProperties(prefix = "advance.security")
 public class AdvanceSecurityProperties {
 
     /**

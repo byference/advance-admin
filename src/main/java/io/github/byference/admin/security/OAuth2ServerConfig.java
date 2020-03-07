@@ -1,12 +1,11 @@
 package io.github.byference.admin.security;
 
 import io.github.byference.admin.constant.SecurityConst;
+import io.github.byference.admin.core.properties.AdvanceAdminProperties;
 import io.github.byference.admin.security.handler.DefaultAccessDeniedHandler;
 import io.github.byference.admin.security.handler.DefaultAuthenticationEntryPoint;
 import io.github.byference.admin.security.handler.DefaultLogoutSuccessHandler;
-import io.github.byference.admin.security.properties.AdvanceSecurityProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.http.HttpMethod;
@@ -31,7 +30,6 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
  * @since 2019-11-02
  */
 @Configuration
-@EnableConfigurationProperties(AdvanceSecurityProperties.class)
 public class OAuth2ServerConfig {
 
     /**
@@ -41,10 +39,10 @@ public class OAuth2ServerConfig {
     @EnableResourceServer
     protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
 
-        private final AdvanceSecurityProperties securityProperties;
+        private final AdvanceAdminProperties advanceAdminProperties;
 
-        public ResourceServerConfiguration(AdvanceSecurityProperties securityProperties) {
-            this.securityProperties = securityProperties;
+        public ResourceServerConfiguration(AdvanceAdminProperties advanceAdminProperties) {
+            this.advanceAdminProperties = advanceAdminProperties;
         }
 
         @Override
@@ -60,7 +58,7 @@ public class OAuth2ServerConfig {
                     .and()
                     .authorizeRequests()
                     .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                    .antMatchers(securityProperties.getPermitUrls()).permitAll()
+                    .antMatchers(advanceAdminProperties.getSecurity().getPermitUrls()).permitAll()
                     .anyRequest().authenticated()
                     .and().logout().logoutSuccessHandler(new DefaultLogoutSuccessHandler());
         }

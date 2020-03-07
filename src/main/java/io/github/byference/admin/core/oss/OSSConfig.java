@@ -1,6 +1,8 @@
 package io.github.byference.admin.core.oss;
 
 import io.github.byference.admin.constant.SystemCommonEnum;
+import io.github.byference.admin.core.properties.AdvanceAdminProperties;
+import io.github.byference.admin.core.properties.MinioProperties;
 import io.github.byference.admin.exception.AdvanceAdminException;
 import io.minio.MinioClient;
 import lombok.extern.slf4j.Slf4j;
@@ -19,19 +21,21 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnProperty(value = "advance.minio.enable", havingValue = "true")
 public class OSSConfig {
 
-    private final OSSProperties ossProperties;
+    private final AdvanceAdminProperties advanceAdminProperties;
 
-    public OSSConfig(OSSProperties ossProperties) {
-        this.ossProperties = ossProperties;
+    public OSSConfig(AdvanceAdminProperties advanceAdminProperties) {
+        this.advanceAdminProperties = advanceAdminProperties;
     }
+
 
     @Bean
     public MinioClient minioClient() {
+        MinioProperties minio = advanceAdminProperties.getMinio();
         MinioClient minioClient;
         try {
-            minioClient = new MinioClient(ossProperties.getUrl(), ossProperties.getAccessKey(), ossProperties.getSecretKey());
+            minioClient = new MinioClient(minio.getUrl(), minio.getAccessKey(), minio.getSecretKey());
         } catch (Exception e) {
-            log.error("initialize MinioClient error, path: " + ossProperties.getUrl(), e);
+            log.error("initialize MinioClient error, path: " + minio.getUrl(), e);
             throw new AdvanceAdminException(SystemCommonEnum.MINIO_CLIENT_INITIALIZE_ERROR, e);
         }
         return minioClient;

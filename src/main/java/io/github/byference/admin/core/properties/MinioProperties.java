@@ -1,19 +1,15 @@
-package io.github.byference.admin.core.oss;
+package io.github.byference.admin.core.properties;
 
 import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 /**
- * OSSProperties
+ * MinioProperties
  *
  * @author byference
  * @since 2020-03-03
  */
 @Data
-@EnableConfigurationProperties(OSSProperties.class)
-@ConfigurationProperties(prefix = "advance.minio")
-public class OSSProperties {
+public class MinioProperties {
 
     /**
      * enable minio oss
