@@ -38,6 +38,11 @@ public class Project implements Serializable {
     private String description;
 
     /**
+     * 项目外链
+     */
+    private String extraUrl;
+
+    /**
      * 项目状态: 0禁用 ,1启用
      */
     private Integer projectStatus;

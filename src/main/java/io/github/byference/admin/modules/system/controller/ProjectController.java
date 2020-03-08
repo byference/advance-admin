@@ -29,7 +29,7 @@ public class ProjectController {
 
     @GetMapping("list")
     @ApiOperation("获取项目列表")
-    public Result<Object> projects() {
+    public Result<List<Project>> projects() {
         List<Project> projects = projectService.getProjects(1, 10);
         return Result.ok(projects);
     }

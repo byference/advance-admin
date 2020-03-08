@@ -39,7 +39,7 @@ public class SysUserController {
 
     @GetMapping("info")
     @ApiOperation("获取系统用户信息")
-    public Result<Object> info() {
+    public Result<SysUserVO> info() {
 
         Integer currentUserId = PrincipalUtil.getCurrentUserId();
         SysUserVO sysUser = sysUserService.getByUserId(currentUserId);
