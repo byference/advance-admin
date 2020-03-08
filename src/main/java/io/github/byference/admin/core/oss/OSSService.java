@@ -1,7 +1,7 @@
 package io.github.byference.admin.core.oss;
 
 import io.github.byference.admin.constant.AdvanceAdminConst;
-import io.github.byference.admin.constant.SystemCommonEnum;
+import io.github.byference.admin.constant.SystemErrorEnum;
 import io.github.byference.admin.exception.AdvanceAdminException;
 import io.minio.MinioClient;
 import org.apache.commons.lang3.StringUtils;
@@ -39,7 +39,7 @@ public class OSSService {
         try {
             minioClient.removeObject(bucketName, objectName);
         } catch (Exception e) {
-            throw new AdvanceAdminException(SystemCommonEnum.OSS_REMOVE_OBJECT_ERROR, e);
+            throw new AdvanceAdminException(SystemErrorEnum.OSS_REMOVE_OBJECT_ERROR, e);
         }
     }
 
@@ -73,7 +73,7 @@ public class OSSService {
             // Get input stream to have content of 'bucketName' from 'objectName'
             inputStream = minioClient.getObject(bucketName, objectName);
         } catch (Exception e) {
-            throw new AdvanceAdminException(SystemCommonEnum.OSS_GET_OBJECT_ERROR, e);
+            throw new AdvanceAdminException(SystemErrorEnum.OSS_GET_OBJECT_ERROR, e);
         }
         return inputStream;
     }
@@ -100,7 +100,7 @@ public class OSSService {
             minioClient.putObject(bucketName, objectName, file.getInputStream(), Long.valueOf(file.getInputStream().available()),
                     null, null, file.getContentType());
         } catch (Exception e) {
-            throw new AdvanceAdminException(SystemCommonEnum.OSS_PUT_OBJECT_ERROR, e);
+            throw new AdvanceAdminException(SystemErrorEnum.OSS_PUT_OBJECT_ERROR, e);
         }
         return String.format("%s/%s", bucketName, objectName);
     }

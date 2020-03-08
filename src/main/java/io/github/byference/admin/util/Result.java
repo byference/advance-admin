@@ -1,7 +1,7 @@
 package io.github.byference.admin.util;
 
 import io.github.byference.admin.constant.EnumVisitor;
-import io.github.byference.admin.constant.SystemCommonEnum;
+import io.github.byference.admin.constant.SystemErrorEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,15 +37,15 @@ public final class Result<T> {
     }
 
     public static <T> Result<T> ok(T data) {
-        return new Result<>(SystemCommonEnum.SUCCESS.getCode(), SystemCommonEnum.SUCCESS.getDescription(), data);
+        return new Result<>(SystemErrorEnum.SUCCESS.getCode(), SystemErrorEnum.SUCCESS.getDescription(), data);
     }
 
     public static <T> Result<T> fail() {
-        return fail(SystemCommonEnum.FAIL);
+        return fail(SystemErrorEnum.FAIL);
     }
 
     public static <T> Result<T> fail(String message) {
-        return new Result<>(SystemCommonEnum.FAIL.getCode(), message, null);
+        return new Result<>(SystemErrorEnum.FAIL.getCode(), message, null);
     }
 
     public static <T> Result<T> fail(EnumVisitor<Integer> enumVisitor) {

@@ -12,7 +12,7 @@ import lombok.Getter;
  */
 @AllArgsConstructor
 @Getter
-public enum SystemCommonEnum implements EnumVisitor<Integer> {
+public enum SystemErrorEnum implements EnumVisitor<Integer> {
 
     FAIL(0, "fail"),
     SUCCESS(1, "success"),

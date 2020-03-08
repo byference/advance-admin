@@ -1,6 +1,6 @@
 package io.github.byference.admin.core.oss;
 
-import io.github.byference.admin.constant.SystemCommonEnum;
+import io.github.byference.admin.constant.SystemErrorEnum;
 import io.github.byference.admin.core.properties.AdvanceAdminProperties;
 import io.github.byference.admin.core.properties.MinioProperties;
 import io.github.byference.admin.exception.AdvanceAdminException;
@@ -36,7 +36,7 @@ public class OSSConfig {
             minioClient = new MinioClient(minio.getUrl(), minio.getAccessKey(), minio.getSecretKey());
         } catch (Exception e) {
             log.error("initialize MinioClient error, path: " + minio.getUrl(), e);
-            throw new AdvanceAdminException(SystemCommonEnum.MINIO_CLIENT_INITIALIZE_ERROR, e);
+            throw new AdvanceAdminException(SystemErrorEnum.MINIO_CLIENT_INITIALIZE_ERROR, e);
         }
         return minioClient;
     }
